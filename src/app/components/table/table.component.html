@@ -1,0 +1,66 @@
+<ng-container *ngIf="withSearch">
+  <div class="selects-wrapper">
+    <ng-container *ngFor="let select of selects | keyvalue">
+      <div class="select">
+        <label class="select-label"> {{ select.value[0].title }}</label>
+
+        <select class="select-item" (change)="selectOption($event, select.key)">
+          <option value="">All</option>
+          <ng-container *ngFor="let select of select.value">
+            <option [value]="select.selectValue">
+              {{ select.selectValue }}
+            </option>
+          </ng-container>
+        </select>
+      </div>
+    </ng-container>
+    <button class="reset" (click)="resetFilter()" *ngIf="showReset()">
+      <em class="app-icon">close</em>
+    </button>
+  </div>
+</ng-container>
+
+<div *ngIf="columns" class="table-wrapper">
+  <table [attr.aria-label]="ariaLabel">
+    <thead>
+      <tr>
+        <ng-container *ngFor="let column of columns">
+          <th>
+            {{ column.title }}
+            <button
+              [class.sort-btns]="column.isSortable"
+              *ngIf="column.isSortable"
+              (click)="onSort(column.dataIndex)"
+            >
+              <em [class.active]="sortType === 'asc'" class="app-icon"
+                >arrow_drop_up</em
+              >
+              <em [class.active]="sortType === 'desc'" class="app-icon"
+                >arrow_drop_down</em
+              >
+            </button>
+          </th>
+        </ng-container>
+      </tr>
+    </thead>
+
+    <tbody>
+      <ng-container *ngFor="let row of displayedData">
+        <tr>
+          <ng-container *ngFor="let column of columns">
+            <ng-container *ngIf="column.dataIndex">
+              <td
+                [class.tooltip]="row[column.dataIndex].length > 50"
+                [matTooltip]="row[column.dataIndex]"
+                matTooltipClass="custom-tooltip"
+                matTooltipPosition="above"
+              >
+                {{ row[column.dataIndex] }}
+              </td>
+            </ng-container>
+          </ng-container>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,188 @@
+.table-wrapper {
+  padding: 10px;
+  overflow: auto hidden;
+
+  table {
+    width: 100%;
+    border-radius: 0.35rem;
+    overflow: hidden;
+
+    overflow-x: scroll;
+
+    td,
+    th {
+      text-align: center;
+      padding: 12px 8px;
+
+      // border-bottom: 2px solid white;
+      min-width: 150px;
+      width: 150px;
+      max-width: 150px;
+      height: 50px;
+    }
+
+    th {
+      background-color: #e6f0fd;
+      color: #336699;
+      font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f3f7fc;
+    }
+
+    tr {
+      transition: all 0.25s ease-in-out;
+
+      &:hover {
+        background: #e6f0fd;
+
+        td {
+          color: #336699;
+        }
+      }
+    }
+
+    td {
+      color: #333333;
+      vertical-align: middle;
+
+    }
+  }
+}
+
+
+// tooltip
+.tooltip {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.custom-tooltip {
+
+  background: #ffcc66;
+  color: #336699 !important;
+  font-size: 14px;
+  position: relative;
+  overflow: visible !important;
+
+  &:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 8px solid #ffcc66;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%)
+  }
+
+}
+
+.cdk-overlay-connected-position-bounding-box {
+  transform: translate(-0, 20px) !important;
+
+}
+
+// ******** filters ********
+
+.selects-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 20px 10px;
+  margin: 10px 10px 0;
+
+  border-radius: 0.35rem;
+
+  background-color: #e6f0fd;
+
+  .select {
+    flex: 1 100%;
+
+    &-label {
+      font-weight: bold;
+      color: #336699;
+      margin-bottom: 0.25rem;
+      display: inline-block;
+    }
+
+    &-item {
+      white-space: nowrap;
+      width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-height: 34px;
+      border-color: #336699;
+      border-radius: 0.35rem;
+
+      &:focus {
+        border-color: #336699;
+      }
+    }
+  }
+
+  .reset {
+    background: transparent;
+    color: #336699;
+
+    border: none;
+    height: 34px;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    .app-icon {
+      font-size: 30px;
+      margin-top: 11px;
+    }
+  }
+}
+
+.sort-btns {
+  border: none;
+  background-color: transparent;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  .app-icon {
+    display: block;
+    color: #fff;
+    font-size: 32px;
+    font-weight: bold;
+
+    &.active {
+      color: #336699;
+    }
+
+    &:first-of-type {
+      margin-bottom: -18px;
+    }
+
+    &:last-of-type {
+      margin-top: -18px;
+    }
+  }
+}
+
+
+@media screen and (min-width: 768px) {
+
+  .selects-wrapper {
+
+
+    .select {
+      flex: 1;
+    }
+
+  }
+}
